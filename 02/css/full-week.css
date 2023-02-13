@@ -1,0 +1,68 @@
+/* header */
+header {
+  margin-bottom: 64px;
+}
+
+h1 {
+  font-size: 48px;
+  color: rgb(71, 62, 62);
+  margin: 0;
+}
+
+/* id 선택자 */
+#description {
+  margin: 12px 0;
+}
+
+/* 하위 결합자
+header p {
+  margin-bottom: 36px;
+} */
+
+a {
+  padding: 12px 48px;
+  background-color: rgb(167, 1, 78);
+  color: white;
+  border: 1px solid rgb(167, 1, 78); /*테두리 : 두께, 선모양, 색깔*/
+  border-radius: 4px; /*테두리 모서리 둥글게*/
+  font-size: 24px;
+  display: inline-block;
+  margin: 0px;
+}
+
+a:hover {
+  background-color: rgb(180, 12, 90);
+  text-decoration: none; /*밑줄 없음*/
+}
+
+/* 메인 */
+ol {
+  list-style: none; /*순서 목록의 숫자 지움*/
+  width: 500px;
+  margin: 36px auto 0 auto;
+  padding: 0;
+}
+
+li {
+  padding: 16px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  margin: 32px;
+  background-color: rgb(223, 136, 124);
+  border-radius: 6px;
+}
+
+h2 {
+  color: rgb(78, 13, 5);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/* 하위 결합자 */
+main p {
+  margin: 12px;
+  color: rgb(71, 29, 22);
+}
+
+/* 클래스 선택자 */
+.highlight-goal {
+  background-color: rgb(226, 115, 101);
+}
