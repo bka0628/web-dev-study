@@ -1,0 +1,21 @@
+/* 공유 스타일 */
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+#page-logo a {
+  padding: 10px;
+  font-family: "Oleo Script";
+  color: rgb(245, 243, 160);
+  font-size: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
