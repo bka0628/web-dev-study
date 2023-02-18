@@ -5,16 +5,17 @@ body {
 }
 
 header {
-    position: static;
+  position: static;
 }
 
-#page-logo a, header a{
-    color: rgb(183, 230, 235);
+#page-logo a,
+header a {
+  color: rgb(183, 230, 235);
 }
 
 header nav a:hover {
-    background-color: rgb(183, 230, 235);
-    color: rgb(59, 59, 59);
+  background-color: rgb(183, 230, 235);
+  color: rgb(59, 59, 59);
 }
 
 main ul {
@@ -51,7 +52,7 @@ main li img {
 }
 
 .item-content h2 {
-    margin: 0;
+  margin: 0;
 }
 
 .actions {
