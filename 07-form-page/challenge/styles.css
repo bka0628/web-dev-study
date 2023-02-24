@@ -5,6 +5,7 @@ body {
 
 h1 {
   text-align: center;
+  margin: 2rem;
 }
 
 form {
@@ -13,7 +14,11 @@ form {
   margin: 0 auto;
   padding: 1rem;
   border-radius: 4px;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+section {
+  margin-bottom: 1rem;
 }
 
 ul {
@@ -24,13 +29,17 @@ ul {
 
 label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+textarea {
+  resize: none;
 }
 
 input,
 textarea,
 select {
+  font: inherit;
   display: block;
   width: 100%;
   margin-bottom: 0.5rem;
@@ -40,15 +49,16 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
+  font: inherit;
   background-color: rgb(209, 226, 250);
-}
-
-hr {
-  border-style: none;
 }
 
 .form-control-inline {
   display: flex;
+}
+
+.form-control-inline label {
+  margin: 0;
 }
 
 .form-control-inline input {
@@ -57,5 +67,32 @@ hr {
 }
 
 button {
-  padding: 0.3rem 1rem;
+  font: inherit;
+  border: 1px solid rgb(51, 67, 100);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#form-actions {
+  text-align: right;
+}
+
+#clear-btn {
+  background-color: transparent;
+  color: rgb(51, 67, 100);
+}
+
+#submit-btn {
+  background-color: rgb(51, 67, 100);
+  color: white;
+}
+
+#clear-btn:hover {
+  background-color: rgb(208, 215, 230);
+}
+
+#submit-btn:hover {
+  background-color: rgb(69, 89, 129);
+  border-color: rgb(69, 89, 129);
 }
