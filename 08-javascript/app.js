@@ -1,6 +1,6 @@
 console.dir(document);
 
-document.body.children[1].children[0].href = "https://naver.com";
+//document.body.children[1].children[0].href = "https://naver.com";
 
 let anchorElent = document.getElementById("external-link");
 anchorElent.href = "https://google.com";
