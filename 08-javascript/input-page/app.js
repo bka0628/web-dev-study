@@ -1,13 +1,13 @@
-let inputElement = document.querySelector("input");
-let remainingElement = document.getElementById("remaining-chars");
+const inputElement = document.querySelector("input");
+const remainingElement = document.getElementById("remaining-chars");
 
-let inputMaxLength = inputElement.maxLength;
+const inputMaxLength = inputElement.maxLength;
 
 function inputlength(event) {
-  let inputText = event.target.value;
-  let inputTextLength = inputText.length;
+  const inputText = event.target.value;
+  const inputTextLength = inputText.length;
 
-  let remainingCharacters = inputMaxLength - inputTextLength;
+  const remainingCharacters = inputMaxLength - inputTextLength;
 
   remainingElement.textContent = remainingCharacters;
 }
