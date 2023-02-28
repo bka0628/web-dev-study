@@ -10,18 +10,19 @@
   </head>
   <body>
     <form action="./" method="get">
-      <section>
-        <label for="productName">Product Name</label>
+      <div class="control">
+        <label for="productname">Product Name</label>
         <input
           type="text"
-          id="productName"
+          id="productname"
           name="product-name"
           maxlength="60"
         />
-      </section>
-      <section>
-        <button type="submit">submit</button>
-      </section>
+        <span id="charcount"> 
+            <span id="remaining-chars">60</span>/60 
+        </span>
+      </div>
+      <button type="submit">submit</button>
     </form>
   </body>
 </html>
