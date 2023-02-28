@@ -40,8 +40,39 @@ firstH1Element.parentElement.removeChild(firstH1Element);
 // M0VE ELEMENTS
 firstParagraph.parentElement.append(firstParagraph);
 
+//
 // innerHTML
 console.log(firstParagraph.textContent); // 텍스트만
 console.log(firstParagraph.innerHTML); // 모든 HTML 내용
 
 firstParagraph.innerHTML = "Hi! This is <strong>important!</strong>.";
+
+//
+//Event Listener
+let pargraphBtnElement = document.querySelector("#paragraph-btn");
+
+console.log(pargraphBtnElement);
+
+function chaneParagraphText() {
+  pargraphBtnElement.textContent = "Clicked!";
+  console.log("Clicked!");
+}
+
+pargraphBtnElement.addEventListener("click", chaneParagraphText);
+
+//Input Event
+let inputElement = document.querySelector("input");
+
+function retrieveUserInput(event) {
+  // let enteredText = inputElement.value;
+  let enteredText = event.target.value;
+  // => 완전한 값
+
+  // let enteredText = event.data;
+  // => 마지막으로 입력한 값
+
+  console.log(enteredText);
+  console.log(event);
+}
+
+inputElement.addEventListener("input", retrieveUserInput);
