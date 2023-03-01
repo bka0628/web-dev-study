@@ -14,8 +14,8 @@ function logFirstButtonElement() {
   console.dir(firstButtonElement);
 }
 
-function logSecondButtonElement() {
-  console.dir(secondButtonElement);
+function logSecondButtonElement(event) {
+  console.dir(event.target);
 }
 
 firstButtonElement.addEventListener("click", logFirstButtonElement);
@@ -34,13 +34,14 @@ const thirdParagraphElement = document.body.children[2].children[3];
 //    - The second button changes the background color of the first paragraph to blue
 // 5) Solve (4) both by changing the "inline styles" as well as by adding CSS classes
 //    Note: You'll have to add those classes to the styles.css file first!
-
 function removeParagraph() {
   thirdParagraphElement.remove();
 }
 
 function changeBackgroundColor() {
   firstParagraphElement.style.backgroundColor = "rgb(0, 191, 255)";
+//   firstParagraphElement.className = "blue-bg";
+//   firstParagraphElement.classList.add("blue-bg");
 }
 
 firstButtonElement.addEventListener("click", removeParagraph);
