@@ -64,7 +64,8 @@ function rollDice() {
 }
 
 function deriveNumberOfDiceRolls() {
-  const targetNumberInputElement = document.getElementById("user-target-number");
+  const targetNumberInputElement =
+    document.getElementById("user-target-number");
   const diceRollsListElement = document.getElementById("dice-rolls");
 
   const userTargetNumber = targetNumberInputElement.valueAsNumber;
@@ -90,7 +91,9 @@ function deriveNumberOfDiceRolls() {
   }
 
   const outputTatalRollsElement = document.getElementById("output-total-rolls");
-  const outputTargetNumberElement = document.getElementById("output-target-number");
+  const outputTargetNumberElement = document.getElementById(
+    "output-target-number"
+  );
 
   outputTargetNumberElement.textContent = userTargetNumber;
   outputTatalRollsElement.textContent = numberOfRolls;
