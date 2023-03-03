@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <header>
+      <h1>Play Tic, Tac, Toe</h1>
+      <p>
+        두 명의 플레이어가 번갈아가며 3x3 크기의 보드에 자신의 기호를 채워넣어
+        가로, 세로 또는 대각선으로 3개의 기호를 먼저 완성하면 승리하는 게임
+      </p>
+    </header>
+    <main>
+      <aside>
+        <h2>Choose your name</h2>
+        <form>
+          <div>
+            <label for="playername">Player name</label>
+            <input type="text" name="playername" id="playername" />
+          </div>
+          <div>
+            <button type="button">Cancel</button>
+            <button type="submit">Confirm</button>
+          </div>
+        </form>
+      </aside>
+
+      <section id="game-configuration">
+        <ol>
+          <li>
+            <article>
+              <h2>Player 1</h2>
+              <h3>PLAYER NAME</h3>
+              <p>X</p>
+              <button>Edit</button>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h2>Player 2</h2>
+              <h3>PLAYER NAME</h3>
+              <p>O</p>
+              <button>Edit</button>
+            </article>
+          </li>
+        </ol>
+        <button>Start New Game</button>
+      </section>
+
+      <section id="active-game">
+        <article>
+          <h3>You won, <span id="winner-name">PLAYER NAME</span>!</h3>
+          <p>Click "Start New Game" above, to start a new game!</p>
+        </article>
+
+        <p>It's your turn <span id="active-player-name">PLAYER NAME</span>!</p>
+        <ol>
+          <li></li>
+          <li></li>
+          <li></li>
+
+          <li></li>
+          <li></li>
+          <li></li>
+
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>
