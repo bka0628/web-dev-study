@@ -1,0 +1,17 @@
+#carousel-example {
+  width: 100%;
+  max-width: 50rem;
+  height: 30rem;
+  margin: 6rem auto;
+}
+
+#carousel-example img {
+  height: 30rem;
+  object-fit: cover;
+}
+
+#newsletter-signup {
+  width: 100%;
+  max-width: 30rem;
+  margin: 4rem auto;
+}
