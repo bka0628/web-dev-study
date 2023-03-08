@@ -1,3 +1,5 @@
+// node.js만 사용한 서버
+
 // http 모듈 요청
 const http = require("http");
 
