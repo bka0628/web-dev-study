@@ -39,5 +39,22 @@ app.post("/store-user", function (req, res) {
   res.send("<h1>Username stored!</h1>");
 }); // localhost:3000/store-user
 
+app.get("/users", function (req, res) {
+  const filePath = path.join(__dirname, "data", "users.json");
+
+  const fileData = fs.readFileSync(filePath);
+  const existingUsers = JSON.parse(fileData);
+
+  let responseData = "<ul>";
+
+  for (const user of existingUsers) {
+    responseData += "<li>" + user + "</li>";
+  }
+
+  responseData += "</ul>";
+
+  res.send(responseData);
+}); // localhost:3000/users
+
 // 3000 포트에서 수신 대기
 app.listen(3000);
