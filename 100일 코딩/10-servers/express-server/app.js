@@ -40,19 +40,21 @@ app.post("/store-user", function (req, res) {
 }); // localhost:3000/store-user
 
 app.get("/users", function (req, res) {
-  const filePath = path.join(__dirname, "data", "users.json");
+  const filePath = path.join(__dirname, "data", "users.json"); // users.json 파일 경로
 
-  const fileData = fs.readFileSync(filePath);
-  const existingUsers = JSON.parse(fileData);
+  const fileData = fs.readFileSync(filePath); // 파일 읽기
+  const existingUsers = JSON.parse(fileData); // 기존 데이터 파싱
 
-  let responseData = "<ul>";
+  // 응답할 HTML 코드 
+  let responseData = "<ul>"; 
 
   for (const user of existingUsers) {
-    responseData += "<li>" + user + "</li>";
+    responseData += "<li>" + user + "</li>"; // 응답할 HTML 코드에 데이터 추가
   }
 
   responseData += "</ul>";
 
+  // 생성된 HTML 코드를 응답으로 전송
   res.send(responseData);
 }); // localhost:3000/users
 
