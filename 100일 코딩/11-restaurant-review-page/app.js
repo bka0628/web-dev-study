@@ -5,25 +5,32 @@ const express = require("express");
 
 const app = express();
 
+// app.set : express 앱의 설정을 구성하는 메서드
+// 뷰 템플릿은 서버에서 HTML, CSS, JavaScript를 렌더링해서 정적 파일로 클라이언트에게 제공한다.
+app.set("views", path.join(__dirname, "views")); // 뷰 템플릿이 위치하는 디렉토리 설정
+app.set("view engine", "ejs"); // 사용할 뷰 템를릿 엔진을 설정하는 코드
+
 // 미들웨어, 정적 파일 제공
 // 모든 요청에 대해 public 파일 안에 정적 파일을 요청하는지 확인 후 제공
-// http://localhost:3000/images/logo.png => public/images/logo.png
+// 예) http://localhost:3000/images/logo.png => public/images/logo.png
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", function (req, res) {
-  const htmlFilePath = path.join(__dirname, "views", "index.html");
-  res.sendFile(htmlFilePath);
+  res.render("index"); // 뷰 템플릿을 렌더링하는 메서드
 }); // localhost:3000/
 
 app.get("/restaurants", function (req, res) {
-  const htmlFilePath = path.join(__dirname, "views", "restaurants.html");
-  res.sendFile(htmlFilePath);
+  const filePath = path.join(__dirname, "data", "restaurants.json");
+
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
+
+  res.render("restaurants", { numberOfRestaurants: storedRestaurants.length });
 }); // localhost:3000/restaurants
 
 app.get("/recommend", function (req, res) {
-  const htmlFilePath = path.join(__dirname, "views", "recommend.html");
-  res.sendFile(htmlFilePath);
+  res.render("recommend");
 }); // get: localhost:3000/recommend
 
 // app.get("/recommend")와 app.post("/recommend")는 같은 경로(/recommend)에
@@ -46,13 +53,11 @@ app.post("/recommend", function (req, res) {
 }); // post: localhost:3000/recommend
 
 app.get("/confirm", function (req, res) {
-  const htmlFilePath = path.join(__dirname, "views", "confirm.html");
-  res.sendFile(htmlFilePath);
+  res.render("confirm");
 }); // localhost:3000/confirm
 
 app.get("/about", function (req, res) {
-  const htmlFilePath = path.join(__dirname, "views", "about.html");
-  res.sendFile(htmlFilePath);
+  res.render("about");
 }); // localhost:3000/about
 
 app.listen(3000);

@@ -1,16 +1,1 @@
-[
-  {
-    "name": "부산전통국밥",
-    "address": "부산 사상구",
-    "cuisine": "한식",
-    "website": "",
-    "description": "부산을 대표하는 음식 중 하나로 꼭 먹어봐야 합니다."
-  },
-  {
-    "name": "안양 순대 볶음",
-    "address": "안양시장",
-    "cuisine": "한식",
-    "website": "",
-    "description": "안양시장 안에 있는 순대 볶음 골목이 유명함"
-  }
-]
+[{"name":"부산전통국밥","address":"부산 사상구","cuisine":"한식","website":"","description":"부산을 대표하는 음식 중 하나로 꼭 먹어봐야 합니다."},{"name":"안양 순대 볶음","address":"안양시장","cuisine":"한식","website":"","description":"안양시장 안에 있는 순대 볶음 골목이 유명함"},{"name":"test","address":"test","cuisine":"test","website":"http://test.com","description":"test"}]
