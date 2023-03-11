@@ -33,6 +33,12 @@ app.get("/restaurants", function (req, res) {
   });
 }); // localhost:3000/restaurants
 
+// : = 동적 경로 정의
+app.get("/restaurants/:id", function (req, res) {
+  const restaurantId = req.params.id
+  res.render('restaurant-detail', { rid: restaurantId });
+});
+
 app.get("/recommend", function (req, res) {
   res.render("recommend");
 }); // get: localhost:3000/recommend
