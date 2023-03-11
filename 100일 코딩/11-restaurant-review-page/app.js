@@ -26,7 +26,11 @@ app.get("/restaurants", function (req, res) {
   const fileData = fs.readFileSync(filePath);
   const storedRestaurants = JSON.parse(fileData);
 
-  res.render("restaurants", { numberOfRestaurants: storedRestaurants.length });
+  //렌더링할 ejs 파일 이름과 전달할 키와 값
+  res.render("restaurants", {
+    numberOfRestaurants: storedRestaurants.length,
+    restaurants: storedRestaurants,
+  });
 }); // localhost:3000/restaurants
 
 app.get("/recommend", function (req, res) {
