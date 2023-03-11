@@ -3,6 +3,9 @@ const path = require("path");
 
 const express = require("express");
 
+//uuid 패키지 불러오기
+const uuid = require("uuid");
+
 const app = express();
 
 // app.set : express 앱의 설정을 구성하는 메서드
@@ -35,8 +38,19 @@ app.get("/restaurants", function (req, res) {
 
 // : = 동적 경로 정의
 app.get("/restaurants/:id", function (req, res) {
-  const restaurantId = req.params.id
-  res.render('restaurant-detail', { rid: restaurantId });
+  const restaurantId = req.params.id; // 동적 경로의 id 값 저장
+
+  const filePath = path.join(__dirname, "data", "restaurants.json");
+
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
+
+  // restaurantId와 일치하는 id를 갖는 배열을 전달
+  for (const restaurant of storedRestaurants) { 
+    if (restaurant.id === restaurantId) {
+      return res.render("restaurant-detail", { restaurant: restaurant });
+    }
+  }
 });
 
 app.get("/recommend", function (req, res) {
@@ -48,6 +62,9 @@ app.get("/recommend", function (req, res) {
 // 따라서 GET 요청과 POST 요청에 대한 서로 다른 응답 처리를 구현할 수 있다.
 app.post("/recommend", function (req, res) {
   const restaurant = req.body;
+
+  // 객체에 존재하지 않는 속성에 접근하면 새로 만들어줌 => .id
+  restaurant.id = uuid.v4(); // uuid 패키지로 객체에 고유한 id값 부여 => 키(id): 값(문자열)
 
   const filePath = path.join(__dirname, "data", "restaurants.json");
 
