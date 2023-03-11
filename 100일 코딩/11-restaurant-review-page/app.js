@@ -46,7 +46,7 @@ app.get("/restaurants/:id", function (req, res) {
   const storedRestaurants = JSON.parse(fileData);
 
   // restaurantId와 일치하는 id를 갖는 배열을 전달
-  for (const restaurant of storedRestaurants) { 
+  for (const restaurant of storedRestaurants) {
     if (restaurant.id === restaurantId) {
       return res.render("restaurant-detail", { restaurant: restaurant });
     }
