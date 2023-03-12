@@ -24,10 +24,7 @@ app.get("/", function (req, res) {
 }); // localhost:3000/
 
 app.get("/restaurants", function (req, res) {
-  const filePath = path.join(__dirname, "data", "restaurants.json");
-
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurants = JSON.parse(fileData);
+  const storedRestaurants = getStoredRestaurants();
 
   //렌더링할 ejs 파일 이름과 전달할 키와 값
   res.render("restaurants", {
@@ -40,10 +37,7 @@ app.get("/restaurants", function (req, res) {
 app.get("/restaurants/:id", function (req, res) {
   const restaurantId = req.params.id; // 동적 경로의 id 값 저장
 
-  const filePath = path.join(__dirname, "data", "restaurants.json");
-
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurants = JSON.parse(fileData);
+  const storedRestaurants = getStoredRestaurants();
 
   // restaurantId와 일치하는 id를 갖는 배열을 전달
   for (const restaurant of storedRestaurants) {
@@ -67,14 +61,11 @@ app.post("/recommend", function (req, res) {
   // 객체에 존재하지 않는 속성에 접근하면 새로 만들어줌 => .id
   restaurant.id = uuid.v4(); // uuid 패키지로 객체에 고유한 id값 부여 => 키(id): 값(문자열)
 
-  const filePath = path.join(__dirname, "data", "restaurants.json");
+  const restaurants = getStoredRestaurants();
 
-  const fileData = fs.readFileSync(filePath); // 원시 텍스트
-  const storedRestaurants = JSON.parse(fileData); // 원시 텍스트 => 자바스크립트 배열
+  restaurants.push(restaurant);
 
-  storedRestaurants.push(restaurant);
-
-  fs.writeFileSync(filePath, JSON.stringify(storedRestaurants)); // 자바스크립트 배열 => 원시 텍스트 => 저장
+  storeRestaurants(restaurants);
 
   //redirect : 사용자가 현재 보고 있는 웹 페이지를 다른 웹 페이지로 자동으로 전환하는 것
   res.redirect("/confirm");
