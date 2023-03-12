@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-const filePath = path.join(__dirname, '..', "data", "restaurants.json");
+const filePath = path.join(__dirname, "..", "data", "restaurants.json");
 
 /**
  * restaurants 데이터를 JSON 파일에서 읽어서 전달
