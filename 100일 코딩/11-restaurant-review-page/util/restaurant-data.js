@@ -1,4 +1,7 @@
-const filePath = path.join(__dirname, "data", "restaurants.json");
+const path = require("path");
+const fs = require("fs");
+
+const filePath = path.join(__dirname, '..', "data", "restaurants.json");
 
 /**
  * restaurants 데이터를 JSON 파일에서 읽어서 전달
@@ -24,3 +27,9 @@ function storeRestaurants(storableRestaurants) {
   // 자바스크립트 배열 => 원시 텍스트 => 저장
   fs.writeFileSync(filePath, JSON.stringify(storableRestaurants));
 }
+
+// 이 모듈에서는 두 개의 함수를 export합니다.
+module.exports = {
+  getStoredRestaurants: getStoredRestaurants,
+  storeRestaurants: storeRestaurants,
+};

@@ -6,6 +6,8 @@ const express = require("express");
 //uuid 패키지 불러오기
 const uuid = require("uuid");
 
+const resData = require('./util/restaurant-data');
+
 const app = express();
 
 // app.set : express 앱의 설정을 구성하는 메서드
@@ -24,7 +26,7 @@ app.get("/", function (req, res) {
 }); // localhost:3000/
 
 app.get("/restaurants", function (req, res) {
-  const storedRestaurants = getStoredRestaurants();
+  const storedRestaurants = resData.getStoredRestaurants();
 
   //렌더링할 ejs 파일 이름과 전달할 키와 값
   res.render("restaurants", {
@@ -37,7 +39,7 @@ app.get("/restaurants", function (req, res) {
 app.get("/restaurants/:id", function (req, res) {
   const restaurantId = req.params.id; // 동적 경로의 id 값 저장
 
-  const storedRestaurants = getStoredRestaurants();
+  const storedRestaurants = resData.getStoredRestaurants();
 
   // restaurantId와 일치하는 id를 갖는 배열을 전달
   for (const restaurant of storedRestaurants) {
@@ -61,12 +63,12 @@ app.post("/recommend", function (req, res) {
   // 객체에 존재하지 않는 속성에 접근하면 새로 만들어줌 => .id
   restaurant.id = uuid.v4(); // uuid 패키지로 객체에 고유한 id값 부여 => 키(id): 값(문자열)
 
-  const restaurants = getStoredRestaurants();
+  const restaurants = resData.getStoredRestaurants();
 
   restaurants.push(restaurant);
 
-  storeRestaurants(restaurants);
-
+  resData.storeRestaurants(restaurants);
+  
   //redirect : 사용자가 현재 보고 있는 웹 페이지를 다른 웹 페이지로 자동으로 전환하는 것
   res.redirect("/confirm");
 }); // post: localhost:3000/recommend
