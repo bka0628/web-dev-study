@@ -46,5 +46,13 @@
     "website": "",
     "description": "맛있는 김밥집",
     "id": "899bc68a-f4f9-4d25-a37b-784be24dd5f6"
+  },
+  {
+    "name": "금순레스토랑",
+    "address": "김해",
+    "cuisine": "한식",
+    "website": "",
+    "description": "맛있어요",
+    "id": "47b9e367-bdaf-4f6f-acf4-625bf926721f"
   }
 ]

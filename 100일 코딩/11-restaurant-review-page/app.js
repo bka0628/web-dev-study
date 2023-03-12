@@ -51,6 +51,7 @@ app.get("/restaurants/:id", function (req, res) {
       return res.render("restaurant-detail", { restaurant: restaurant });
     }
   }
+  res.status.render("404"); // 동적 경로가 없을 때 보내는 '404'오류 페이지
 });
 
 app.get("/recommend", function (req, res) {
@@ -86,5 +87,19 @@ app.get("/confirm", function (req, res) {
 app.get("/about", function (req, res) {
   res.render("about");
 }); // localhost:3000/about
+
+// 해당하는 경로가 없는 경우 => 상태 코드: 404
+// 모든 요청에 대해 실행하는 핸들러 함수이기 때문에
+// 맨 마지막에 실행해서 다른 경로에서 처리되지 않은 요청을 처리
+app.use(function (req, res) {
+  // status(): 응답 객체('res')의 상태 코드를 설정
+  res.status(404).render("404");
+});
+
+// 서버에 문재가 생긴 경우 => 상태 코드: 500
+// 오류 처리 미들웨어 함수 & 에러 핸들링 미들웨어 함수
+app.use(function (err, req, res, nest) {
+  res.status(500).render("500");
+});
 
 app.listen(3000);
