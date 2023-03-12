@@ -6,12 +6,36 @@ const resData = require("../util/restaurant-data");
 const router = express.Router(); // 라우터 객체를 생성
 
 router.get("/restaurants", function (req, res) {
+  let order = req.query.order;
+  let nextOrder = "desc";
+
+  if (order !== "asc" && order !== "desc") {
+    // adc와 desc 모두 아닐때
+    order = "asc"; // 기본 값
+  }
+
+  if (order == "desc") {
+    nextOrder = "asc";
+  }
+
   const storedRestaurants = resData.getStoredRestaurants();
+
+  // 정렬
+  storedRestaurants.sort(function (resA, resB) {
+    if (
+      (order === "asc" && resA.name > resB.name) ||
+      (order === "desc" && resA.name < resB.name)
+    ) {
+      return 1;
+    }
+    return -1;
+  });
 
   //렌더링할 ejs 파일 이름과 전달할 키와 값
   res.render("restaurants", {
     numberOfRestaurants: storedRestaurants.length,
     restaurants: storedRestaurants,
+    nextOrder: nextOrder,
   });
 }); // localhost:3000/restaurants
 
