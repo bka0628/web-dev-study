@@ -20,20 +20,32 @@ async function readFile() {
   //   });
 
   // 프로미스 => 비동기 작업 처리 방법 중 하나
-  fileData = await fs
-    .readFile("data.txt")
-    .then(function (fileData) {
-      console.log("File parsing done!");
-      console.log(fileData.toString());
-      // return anotherAsyncOperation;
-    })
-    .then(function () {
-      // 프로미스 체인
-    })
-    .catch(function (error) {
-      // 오류 처리
-      console.log(error);
-    });
+  //   fs.readFile("data.txt")
+  //     .then(function (fileData) {
+  //       console.log("File parsing done!");
+  //       console.log(fileData.toString());
+  //       // return anotherAsyncOperation;
+  //     })
+  //     .then(function () {
+  //       // 프로미스 체인
+  //     })
+  //     .catch(function (error) {
+  //       // 오류 처리
+  //       console.log(error);
+  //     });
+
+  // async/ await로 코드 개선
+  // 동기식 처럼 보이지만 비동기식이다.
+  // 하지만 위에 비동기식과는 달리
+  // try/catch문으로 오류 처리를 할 수 있다.
+  try {
+    fileData = await fs.readFile("data.txt");
+  } catch (error) {
+    console.log(error);
+  }
+
+  console.log("File parsing done!");
+  console.log(fileData.toString());
 
   console.log("Hi there!");
 }
