@@ -10,7 +10,15 @@
   <%- include('includes/header') %>
   <main id="all-posts">
     <h1>All Posts</h1>
-   
+    <ul id="posts-list">
+      <% for (const post of posts) { %>
+        <li class="post-item">
+          <h2><%= post.title %></h2>
+          <p><%= post.summary %></p>
+          <button class="btn">daf</button>
+        </li>
+      <% } %>
+    </ul>
   </main> 
 </body>
 
