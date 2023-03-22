@@ -1,22 +1,22 @@
-let result = 0;
-let text = `${result}`;
+const defaultResult = 0;
+let currentResult = defaultResult;
 
 function calculate(event) {
   const operator = event.target.textContent;
   const userNumber = +userInput.value;
-  text += ` ${operator} ${userNumber}`;
+  const calcDescription = `${currentResult} ${operator} ${userNumber}`;
 
   if (operator === "+") {
-    result += userNumber;
+    currentResult += userNumber;
   } else if (operator === "-") {
-    result -= userNumber;
+    currentResult -= userNumber;
   } else if (operator === "*") {
-    result *= userNumber;
+    currentResult *= userNumber;
   } else {
-    result /= userNumber;
+    currentResult /= userNumber;
   }
 
-  outputResult(result, text);
+  outputResult(currentResult, calcDescription);
 }
 
 addBtn.addEventListener("click", calculate);
