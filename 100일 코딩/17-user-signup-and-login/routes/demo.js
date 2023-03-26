@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcryptjs');
 
 const db = require('../data/database');
 
@@ -22,9 +23,11 @@ router.post('/signup', async function (req, res) {
   const enteredConfirmEmail = userData['confirm-email']; // '-'와 같이 '.'에서 허용되지 않은 문자가 포함시 사용
   const enteredPassword = userData.password;
 
+  const hashedPaddword = await bcrypt.hash(enteredPassword, 12);
+
   const user = {
     emsil: enteredEmail,
-    password: enteredPassword,
+    password: hashedPaddword,
   };
 
   await db.getDb().collection('users').insertOne(user);
