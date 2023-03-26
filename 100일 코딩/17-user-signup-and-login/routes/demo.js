@@ -16,7 +16,21 @@ router.get('/login', function (req, res) {
   res.render('login');
 });
 
-router.post('/signup', async function (req, res) {});
+router.post('/signup', async function (req, res) {
+  const userData = req.body;
+  const enteredEmail = userData.email;
+  const enteredConfirmEmail = userData['confirm-email']; // '-'와 같이 '.'에서 허용되지 않은 문자가 포함시 사용
+  const enteredPassword = userData.password;
+
+  const user = {
+    emsil: enteredEmail,
+    password: enteredPassword,
+  };
+
+  await db.getDb().collection('users').insertOne(user);
+
+  res.redirect('/login');
+});
 
 router.post('/login', async function (req, res) {});
 
