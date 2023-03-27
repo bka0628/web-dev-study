@@ -23,6 +23,28 @@ router.post('/signup', async function (req, res) {
   const enteredConfirmEmail = userData['confirm-email']; // '-'와 같이 '.'에서 허용되지 않은 문자가 포함시 사용
   const enteredPassword = userData.password;
 
+  if (
+    !enteredEmail ||
+    !enteredConfirmEmail ||
+    !enteredPassword ||
+    enteredPassword.trim() < 6 ||
+    enteredEmail !== enteredConfirmEmail ||
+    !enteredEmail.includes('@')
+  ) {
+    console.log('Incorrect data');
+    return res.redirect('/signup');
+  }
+
+  const existingUser = await db
+    .getDb()
+    .collection('users')
+    .findOne({ email: enteredEmail });
+
+  if (existingUser) {
+    console.log('User exists already');
+    return res.redirect('/signup');
+  }
+
   const hashedPaddword = await bcrypt.hash(enteredPassword, 12);
 
   const user = {
