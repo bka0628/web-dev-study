@@ -90,6 +90,10 @@ router.post('/login', async function (req, res) {
 });
 
 router.get('/admin', function (req, res) {
+  if (!req.session.isAuthenticated) {
+    return res.status(401).render('401');
+  }
+
   res.render('admin');
 });
 
