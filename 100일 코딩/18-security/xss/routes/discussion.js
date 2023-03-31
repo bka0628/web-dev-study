@@ -1,4 +1,5 @@
 const express = require('express');
+const xss = require('xss');
 
 const db = require('../data/database');
 
@@ -15,7 +16,7 @@ router.get('/discussion', async function (req, res) {
 
 router.post('/discussion/comment', async function (req, res) {
   const comment = {
-    text: req.body.comment,
+    text: xss(req.body.comment), // 사용자 입력에서 script 태그를 삭제
   };
 
   await db.getDb().collection('comments').insertOne(comment);
