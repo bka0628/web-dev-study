@@ -149,15 +149,15 @@ router.post('/login', async function (req, res) {
   });
 });
 
-
 router.get('/transaction', function (req, res) {
   if (!res.locals.isAuth) {
     return res.status(401).render('401');
   }
-  res.render('transaction');
+  const csrfToken = req.csrfToken(); // 토큰 생성
+  res.render('transaction', { csrfToken: csrfToken }); // 토큰을 템플릿에 보내기
 });
 
-router.post('/transaction', async function(req, res) {
+router.post('/transaction', async function (req, res) {
   if (!res.locals.isAuth) {
     return res.redirect('/login');
   }
@@ -165,15 +165,15 @@ router.post('/transaction', async function(req, res) {
   const transaction = {
     sender: res.locals.user.email, // parsed from session in app.js
     recipient: req.body.recipient,
-    amount: +req.body.amount // "+" to convert to number
-  }
+    amount: +req.body.amount, // "+" to convert to number
+  };
 
   await db.getDb().collection('transactions').insertOne(transaction);
 
   res.redirect('success');
-})
+});
 
-router.get('/success', function(req, res) {
+router.get('/success', function (req, res) {
   res.render('success');
 });
 
