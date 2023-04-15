@@ -6,9 +6,7 @@
       <a class="btn btn-alt" href="/admin/products/<%= product.id %>"
         >View & Edit</a
       >
-      <form action="/admin/products/<%= product.id %>/delete?_csrf=<%= locals.csrfToken %>" method="POST">
-        <button class="btn btn-alt">Delete</button>
-      </form>
+      <button class="btn btn-alt" data-productid="<%= product.id %>" data-csrf="<%= locals.csrfToken %>">Delete</button>
     </div>
   </div>
 </article>
