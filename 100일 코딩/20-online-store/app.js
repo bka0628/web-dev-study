@@ -15,6 +15,7 @@ const authRoutes = require('./routes/auth.routes');
 const baseRoutes = require('./routes/base.routes');
 const productRoutes = require('./routes/products.routes');
 const adminRoutes = require('./routes/admin.routes');
+const cartRoutes = require('./routes/cart.routes');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use('/products/assets', express.static('product-data'));
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 const sessionConfig = createSessionConfig();
 
@@ -38,7 +40,8 @@ app.use(checkAuthStatusMiddleware);
 app.use(authRoutes);
 app.use(baseRoutes);
 app.use(productRoutes);
-app.use(protectRoutesMiddleware);
+app.use('/cart', cartRoutes);
+app.use(protectRoutesMiddleware); 
 app.use('/admin', adminRoutes);
 
 app.use(errorHandlerMiddleware);
